@@ -102,7 +102,7 @@ document.getElementById("requestForm").addEventListener("submit", async function
   console.log("Sending to backend:", formData);
 
   // const BASE_URL = "https://jpl-admin.onrender.com";
-  const BASE_URL = "http://localhost:5000";
+  const BASE_URL = "https://jpl-z0s7.onrender.com";
 
   try {
     const res = await fetch(`${BASE_URL}/api/request`, {

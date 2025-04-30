@@ -94,6 +94,7 @@ function displayRequests(requests, filter = "all") {
             <td>#${request._id || ""}</td>
             <td>${request.name || ""}</td>
             <td>${request.department || ""}</td>
+            <td>${request.location || ""}</td>
             <td>${request.item || ""}</td>
             <td>${request.specialAllowance || ""}</td>
             <td>

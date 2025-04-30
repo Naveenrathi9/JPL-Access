@@ -5,6 +5,7 @@ const requestSchema = new mongoose.Schema({
   employeeCode: String,
   designation: String,
   department: String,
+  location: String,
   specialAllowance:String,
   item: String,
   reason: String,

@@ -46,7 +46,7 @@ const sendFinalMailToIT = async (request) => {
           <h2 style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">📋 Final IT Request Update</h2>
           <p style="font-size: 16px; color: #444;">
             The request submitted by <strong>${name}</strong> has been 
-            <span style="color: ${statusColor}; font-weight: bold;">${finalStatus}</span> by both HR and HOD.
+            <span style="color: ${statusColor}; font-weight: bold;">${finalStatus}</span> by the Authorities.
           </p>
 
           <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
@@ -100,7 +100,7 @@ const sendFinalMailToIT = async (request) => {
           <h2 style="margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 8px;">📋 Final IT Request Update</h2>
           <p style="font-size: 16px; color: #444;">
             The request submitted by <strong>${name}</strong> has been 
-            <span style="color: ${statusColor}; font-weight: bold;">${finalStatus}</span> by both HR and HOD.
+            <span style="color: ${statusColor}; font-weight: bold;">${finalStatus}</span> by the Authorities.
           </p>
 
           <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">

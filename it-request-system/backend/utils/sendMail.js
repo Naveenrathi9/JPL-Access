@@ -22,6 +22,7 @@ const sendRequestMail = async (requestData, requestId) => {
     employeeCode,
     designation,
     department,
+    location,
     specialAllowance,
     item,
     reason,
@@ -47,7 +48,7 @@ const sendRequestMail = async (requestData, requestId) => {
       </p>
 
       <p style="font-size: 15px; color: #444; line-height: 1.6;">
-        An IT equipment request has been submitted by <strong>${name}</strong> (Employee Code: <strong>${employeeCode}</strong>), who is currently working as a <strong>${designation}</strong> in the <strong>${department}</strong> department.
+        An IT equipment request has been submitted by <strong>${name}</strong> (Employee Code: <strong>${employeeCode}</strong>), who is currently working as a <strong>${designation}</strong> in the <strong>${department}</strong> department for <strong>${location}</strong> location.
       </p>
 
       <p style="font-size: 15px; color: #444; line-height: 1.6;">

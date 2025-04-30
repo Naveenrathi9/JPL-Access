@@ -1,10 +1,10 @@
 :root {
   --primary-color: #2c3e50;
-  --primary-hover: #1a2b3c;
+  --primary-hover: #3c6c99;
   --accent-color: #3498db;
-  --text-primary: #333333;
-  --text-secondary: #555555;
-  --border-color: #dddddd;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --border-color: #ffffff;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --radius-sm: 4px;
@@ -22,7 +22,8 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
   line-height: 1.5;
-  background-image: url(bg2.jpg);
+  background-image: url(bg01.jpg);
+  background-size: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,7 +50,7 @@ body {
 }
 
 .logo {
-  height: 55px;
+  height: 65px;
 }
 
 .admin-button {
@@ -86,7 +87,7 @@ body {
 
 .form-card {
   background-color: transparent;
-  backdrop-filter: blur(3px);
+  backdrop-filter: blur(8px);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   padding: 2rem;
@@ -214,6 +215,7 @@ button:hover {
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
+    background-color: aliceblue;
   }
   
   .form-card {
@@ -231,6 +233,7 @@ button:hover {
   
   .header {
     padding: 1rem;
+    background-color: #3498db;
   }
 }
 

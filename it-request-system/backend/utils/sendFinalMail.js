@@ -20,6 +20,7 @@ const sendFinalMailToIT = async (request) => {
     employeeCode,
     designation,
     department,
+    location,
     specialAllowance,
     item,
     reason,
@@ -73,6 +74,10 @@ const sendFinalMailToIT = async (request) => {
             <tr>
               <th align="left" style="padding: 10px;">📝 Reason</th>
               <td style="padding: 10px;">${reason}</td>
+            </tr>
+            <tr>
+              <th align="left" style="padding: 10px;">📝 Location</th>
+              <td style="padding: 10px;">${location}</td>
             </tr>
             <tr style="background: #f0f0f0;">
               <th align="left" style="padding: 10px;">📌 Final Status</th>
@@ -128,6 +133,10 @@ const sendFinalMailToIT = async (request) => {
               <th align="left" style="padding: 10px;">📝 Reason</th>
               <td style="padding: 10px;">${reason}</td>
             </tr>
+            <tr>
+              <th align="left" style="padding: 10px;">📝 Location</th>
+              <td style="padding: 10px;">${location}</td>
+            </tr>
             <tr style="background: #f0f0f0;">
               <th align="left" style="padding: 10px;">📌 Final Status</th>
               <td style="padding: 10px; color: ${statusColor}; font-weight: bold;">${finalStatus}</td>
@@ -135,7 +144,7 @@ const sendFinalMailToIT = async (request) => {
           </table>
 
           <p style="margin-top: 25px; font-size: 15px; color: #555;">
-            👉 Please proceed with the necessary action from the IT department.
+            👉 Please contacy IT department for further actions.
           </p>
 
           <p style="margin-top: 30px; font-size: 13px; color: #888;">— IT Request System</p>

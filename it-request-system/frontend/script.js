@@ -93,6 +93,7 @@ document.getElementById("requestForm").addEventListener("submit", async function
     designation: form.designation.value,
     email: form.email.value,
     department: form.department.value,
+    location: form.location.value,
     specialAllowance: document.querySelector('input[name="specialAllowance"]:checked').value,
     item: form.item.value,
     reason: form.reason.value,

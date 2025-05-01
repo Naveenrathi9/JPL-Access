@@ -1,7 +1,5 @@
 //const BASE_URL = "http://localhost:5000";
-const BASE_URL = "https://jpl-z0s7.onrender.com";
-//const BASE_URL = "https://jpl-admin.onrender.com";
-
+const BASE_URL = "https://jpl-z0s7.onrender.com";;
 
 // Check if user is logged in
 function checkAuth() {
@@ -11,6 +9,33 @@ function checkAuth() {
     return false;
   }
   return true;
+}
+
+// Get the current HOD's email (username)
+function getCurrentHodEmail() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  if (!loggedInUser) {
+    console.error("No logged-in user found");
+    return null;
+  }
+  return loggedInUser.toLowerCase();
+}
+
+// Filter requests by current HOD's email
+function filterByCurrentHod(requests) {
+  const hodEmail = getCurrentHodEmail();
+  if (!hodEmail) {
+    console.warn("No HOD email found - showing no requests");
+    return [];
+  }
+  
+  return requests.filter(request => {
+    if (!request.hodEmail) {
+      console.warn("Request missing hodEmail:", request._id);
+      return false;
+    }
+    return request.hodEmail.toLowerCase() === hodEmail;
+  });
 }
 
 // Load and display requests
@@ -24,28 +49,31 @@ async function loadRequests() {
       throw new Error("Failed to fetch requests");
     }
 
-    const requests = await response.json();
-    console.log("Loaded requests from backend:", requests);
+    const allRequests = await response.json();
+    console.log("Loaded requests from backend:", allRequests);
 
-    // Update localStorage with latest data
-    localStorage.setItem("requests", JSON.stringify(requests));
+    // Filter requests for current HOD only
+    const hodRequests = filterByCurrentHod(allRequests);
+    
+    // Update localStorage with filtered data
+    localStorage.setItem("requests", JSON.stringify(hodRequests));
 
-    // Update UI
-    updateStats(requests);
-    displayRequests(requests);
+    // Update UI with filtered requests
+    updateStats(hodRequests);
+    displayRequests(hodRequests);
   } catch (error) {
     console.error("Error loading requests:", error);
     // Show error message to user
     const tbody = document.getElementById("requestsTableBody");
     if (tbody) {
-    tbody.innerHTML = `
-                <tr>
-                    <td colspan="9" class="text-center text-danger">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Failed to load requests. Please try again later.
-                    </td>
-                </tr>
-            `;
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="9" class="text-center text-danger">
+            <i class="fas fa-exclamation-circle"></i>
+            Failed to load requests. Please try again later.
+          </td>
+        </tr>
+      `;
     }
   }
 }
@@ -64,6 +92,11 @@ function updateStats(requests) {
   document.getElementById("approvedRequests").textContent = stats.approved;
   document.getElementById("rejectedRequests").textContent = stats.rejected;
 }
+
+// [Rest of the functions remain exactly the same...]
+// Format status text, displayRequests, getStatusBadgeClass, 
+// handleAction, handleSearch, handleFilter, logout, initDashboard
+// ...
 
 // Format status text
 function formatStatus(status) {
@@ -97,7 +130,6 @@ function displayRequests(requests, filter = "all") {
             <td>#${request._id || ""}</td>
             <td>${request.name || ""}</td>
             <td>${request.department || ""}</td>
-            <td>${request.location || ""}</td>
             <td>${request.item || ""}</td>
            <td>${request.specialAllowance || ""}</td>
             <td>

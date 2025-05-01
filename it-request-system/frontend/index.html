@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IT Item Request</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Equipment Request Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header class="header">
-    <div class="header-content">
-      <div class="header-left">
-        <img src="logo.png" alt="Company Logo" class="logo">
-      </div>
-      <div class="header-right">
-        <a href="login_dashboard.html" class="admin-button">
-          <i class="fas fa-user-shield"></i> Admin Access
-        </a>
+  <!-- Navigation Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <img src="logo.png" alt="Company Logo" class="logo">
+      <h1>IT Portal</h1>
+    </div>
+    <ul class="sidebar-menu">
+      <li class="active"><a href="#"><i class="fas fa-file-alt"></i> New Request</a></li>
+      <li><a href="hr_login.html"><i class="fa-solid fa-user"></i></i> HR Dashboard</a></li>
+      <li><a href="hod_login.html"><i class="fa-solid fa-user"></i></i> HOD Dashboard</a></li>
+      <li><a href="login.html"><i class="fa-solid fa-user"></i></i> IT Dashboard</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <a href="#" class="admin-button">
+        <i class="fas fa-user-shield"></i> JPL GROUP
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-header">
+      <h2>IT Equipment Request Form</h2>
+      <div class="user-profile">
+        <span>Welcome</span>
+        
       </div>
     </div>
-  </header>
 
-  <div class="container">
-    <div class="form-card">
+    <div class="form-container">
       <form id="requestForm">
-        <div class="form-section">
-          <h3>Personal Information</h3>
-          <div class="form-row">
+        <!-- Progress Indicator -->
+        <div class="form-progress">
+          <div class="progress-step active">1. Personal Info</div>
+          <div class="progress-step">2. Equipment Details</div>
+          <div class="progress-step">3. Review & Submit</div>
+        </div>
+
+        <!-- Personal Information Section -->
+        <div class="form-section active" id="personalInfo">
+          <h3><i class="fas fa-user-circle"></i> Personal Information</h3>
+          <div class="form-grid">
             <div class="form-group">
-              <label>Name</label>
-              <input type="text" name="name" placeholder="Enter your name" required />
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
             </div>
             <div class="form-group">
-              <label>Employee Code</label>
-              <input type="text" name="employeeCode" placeholder="Enter employee code" required />
+              <label for="employeeCode">Employee Code</label>
+              <input type="text" id="employeeCode" name="employeeCode" placeholder="Enter employee code" required>
             </div>
             <div class="form-group">
-              <label>Designation</label>
-              <select name="designation" required>
+              <label for="designation">Designation</label>
+              <select id="designation" name="designation" required>
                 <option value="">-- Select Designation --</option>
                 <option value="General Manager">General Manager</option>
                 <option value="Deputy General Manager">Deputy General Manager</option>
@@ -67,16 +88,14 @@
                 </label>
               </div>
             </div>
-          </div>
-
-          <div class="form-row">
+            
             <div class="form-group">
-              <label>User Email</label>
-              <input type="email" name="email" placeholder="Enter your email" required />
+              <label for="email">User Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
-              <label>Department</label>
-              <select name="department" id="department" required>
+              <label for="department">Department</label>
+              <select id="department" name="department" required>
                 <option value="">-- Select Department --</option>
                 <option value="Unit Head Office">Unit Head Office</option>
                 <option value="Operation & Maintenance">Operation & Maintenance</option>
@@ -113,26 +132,33 @@
               </select>
             </div>
             <div class="form-group">
-              <label>HOD Email</label>
-              <input type="email" name="hodEmail" id="hodEmail" placeholder="HOD email" readonly required />
+              <label for="hodEmail">HOD Email</label>
+              <div class="input-with-icon">
+                <input type="email" id="hodEmail" name="hodEmail" placeholder="HOD email" readonly required>
+                <i class="fas fa-info-circle" title="This will be auto-filled based on your department"></i>
+              </div>
             </div>
             <div class="form-group">
-              <label>Location</label>
-              <select name="location" required>
+              <label for="location">Location</label>
+              <select id="location" name="location" required>
                 <option value="">-- Select Location --</option>
                 <option value="Tamnar">Tamnar</option>
                 <option value="Coal Mines">Coal Mines</option>
               </select>
-            <div class="form-group"></div>
+            </div>
+          </div>
+          <div class="form-navigation">
+            <button type="button" class="btn-next">Next <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
 
-        <div class="form-section">
-          <h3>Equipment Details</h3>
-          <div class="form-row">
+        <!-- Equipment Details Section -->
+        <div class="form-section" id="equipmentDetails">
+          <h3><i class="fas fa-laptop"></i> Equipment Details</h3>
+          <div class="form-grid">
             <div class="form-group">
-              <label>Select Item</label>
-              <select name="item" required>
+              <label for="item">Select Item</label>
+              <select id="item" name="item" required>
                 <option value="">-- Select Item --</option>
                 <option value="Laptop">Laptop</option>
                 <option value="Desktop">Desktop</option>
@@ -141,54 +167,72 @@
                 <option value="Email Generation">Email Generation</option>
               </select>
             </div>
-            <div class="form-group span-3">
-              <label>Reason</label>
-              <textarea name="reason" rows="3" placeholder="Please provide a detailed reason for your request"
-                required></textarea>
+            <div class="form-group full-width">
+              <label for="reason">Reason</label>
+              <textarea id="reason" name="reason" rows="4" placeholder="Please provide a detailed reason for your request" required></textarea>
+              <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
             </div>
+            <div class="form-group full-width">
+              <label>Upload Supporting Document (Optional)</label>
+              <div class="file-upload">
+                <input type="file" id="supportDoc" name="supportDoc" accept=".pdf,.doc,.docx,.jpg,.png">
+                <label for="supportDoc" class="upload-btn">
+                  <i class="fas fa-cloud-upload-alt"></i> Choose File
+                </label>
+                <span class="file-name">No file chosen</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-navigation">
+            <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+            <button type="button" class="btn-next">Next <i class="fas fa-arrow-right"></i></button>
           </div>
         </div>
 
-        <div class="form-actions">
-          <button type="submit" id="submitButton">SUBMIT</button>
+        <!-- Review Section -->
+        <div class="form-section" id="reviewSection">
+          <h3><i class="fas fa-check-circle"></i> Review Your Request</h3>
+          <div class="review-summary">
+            <div class="review-item">
+              <h4>Personal Information</h4>
+              <div id="personalInfoReview"></div>
+            </div>
+            <div class="review-item">
+              <h4>Equipment Details</h4>
+              <div id="equipmentReview"></div>
+            </div>
+          </div>
+          <div class="form-navigation">
+            <button type="button" class="btn-prev"><i class="fas fa-arrow-left"></i> Previous</button>
+            <button type="submit" id="submitButton" class="btn-submit">
+              <i class="fas fa-paper-plane"></i> Submit Request
+            </button>
+          </div>
         </div>
-        <div id="responseMessage" class="response-message"></div>
       </form>
     </div>
-  </div>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="copyright">
-        2025 IT Equipment Portal. All rights reserved.
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+      <div class="modal-content">
+        <div class="modal-icon success">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Request Submitted Successfully!</h3>
+        <p>Your request ID: <strong>IT-2023-0567</strong></p>
+        <p>You'll receive a confirmation email shortly.</p>
+        <div class="modal-actions">
+          <button id="printReceipt" class="btn-secondary">
+            <i class="fas fa-print"></i> Print Receipt
+          </button>
+          <button id="newRequest" class="btn-primary">
+            <i class="fas fa-plus"></i> Create New Request
+          </button>
+        </div>
       </div>
     </div>
-  </footer>
+  </main>
 
   <script src="script.js"></script>
-  <script>
-    document.getElementById('requestForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const submitButton = document.getElementById('submitButton');
-
-      // Disable button and show processing state
-      submitButton.disabled = true;
-      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing';
-
-      // Simulate form submission (replace with actual form submission)
-      setTimeout(() => {
-        // On success, you might redirect or show a success message
-        alert('Form submitted successfully!');
-
-        // On failure, you could re-enable the button:
-        // submitButton.disabled = false;
-        // submitButton.textContent = 'SUBMIT';
-      }, 1500);
-
-      // For actual form submission, use:
-      // this.submit();
-    });
-  </script>
 </body>
-
 </html>

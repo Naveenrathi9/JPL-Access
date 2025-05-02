@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     "Others",
     "Apprentice",
     "Junior Engineer" 
+    "Assistant Engineer"
   ];
 
   let currentSection = 0;
